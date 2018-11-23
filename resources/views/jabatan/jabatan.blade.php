@@ -50,7 +50,7 @@
         </div>
 
         <div class="modal fade" id="hapusjabatan">
-            <div class="modal-dialog">
+            <div class="modal-dialog md-l">
               <div class="modal-content">
                   <div class="modal-body">
                       <div class="icon-warning">
@@ -64,7 +64,7 @@
                 <div class="modal-footer modal-footer-center">
                   <div class="btn-group btn-ac-d">
                     @if(!empty($jabatan))
-                    <form action="{{URL('jabatan/'. $jabatan->id) }}data-id" method="POST">
+                    <form action="{{URL('jabatan/'. $jabatan->id) }}" method="POST">
                       {{ csrf_field() }}
                       {{ method_field('DELETE') }}
                       <a href=""><button type="submit" class="btn btn-flat btn-danger">Yakin</i></button></a>
@@ -85,6 +85,9 @@
 @section('script')
 <script>
  $('#datajabatan').dataTable({});
+
+
+
 </script>
 
 @endsection
