@@ -1,0 +1,46 @@
+.icon-warning{
+	text-align: center;;
+}
+
+.icon-warning .fa{
+	font-size: 50px;
+    text-align: center;
+    color: #f39c12 !important;
+}
+
+.error-text h2{
+	text-align: center;
+}
+
+.modal-footer-center{
+	text-align: center;
+}
+
+.modal-footer-center .btn{
+	width:100px;
+}
+.actionth{
+	text-align: center;
+}
+.action{
+	vertical-align: middle !important;
+	text-align:center !important;
+}
+
+.btn-ac, .btn-ac-d{
+	display: inline-flex;
+    text-align: center;
+}
+
+.btn-ac .btn-warning, .btn-ac-d .btn-danger {
+	margin-right: 6px;
+}
+
+ /*.skin-purple .main-header .navbar, .skin-purple .main-header .logo  {
+	background-color:greenyellow !important;
+}  
+
+ 
+.skin-purple .main-sidebar {
+    background-color: red !important;
+} */
