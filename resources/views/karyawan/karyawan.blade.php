@@ -7,13 +7,6 @@
       <div class="row">
         <div class="col-xs-12">
 
-          @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-block">
-              <button type="button" class="close" data-dismiss="alert">×</button> 
-                <strong>{{ $message }}</strong>
-            </div>
-          @endif
-
           <div class="box">      
             <div class="box-header">
               <h3 class="box-title">Data Karyawan</h3>
@@ -41,7 +34,7 @@
                             <td class="action">
                               <div class="btn-group btn-ac">
                                 <a href="{{ URL::to('karyawan/' . $karyawan->id . '/edit') }}" class="btn btn-flat btn-warning" type="button"><i class="fa fa-pencil"></i></a>
-                                <a href="#" type="button" data-toggle="modal" data-target="#hapuskaryawan" class="btn btn-flat btn-danger"><i class="fa fa-times"></i></a> 
+                                <a href="#" type="button" onclick="Deletedata({{$karyawan->id}})" data-toggle="modal" data-target="#hapuskaryawan" class="btn btn-flat btn-danger"><i class="fa fa-times"></i></a> 
                               </div>
                             </td>
                             <td>{{$karyawan->nama_karyawan}}</td>
@@ -72,7 +65,7 @@
                 <div class="modal-footer modal-footer-center">
                   <div class="btn-group btn-ac-d">
                     @if(!empty($karyawan))
-                    <form action="{{URL('karyawan/'. $karyawan->id) }}" method="POST">
+                    <form id="deleteac" action="" method="POST">
                       {{ csrf_field() }}
                       {{ method_field('DELETE') }}
                       <a href=""><button type="submit" class="btn btn-flat btn-danger">Yakin</i></button></a>
@@ -93,6 +86,11 @@
 @section('script')
 <script>
  $('#datakaryawan').dataTable({});
+
+ function Deletedata(id){
+   var url = '{{URL('karyawan') }}' + '/' + id
+   $("#deleteac").attr("action", url);
+ }
 </script>
 
 @endsection

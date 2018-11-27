@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Jabatan;
+use Alert;
 
 class JabatanController extends Controller
 {
@@ -26,6 +27,12 @@ class JabatanController extends Controller
         $jabatan= new Jabatan();
         $jabatan->jabatan = $request->get('jabatan');
         $jabatan->save();
+
+        
+        if($jabatan->save()){
+            Alert::success('Jabatan Created', 'Sucesss');
+        }
+
         return redirect()->to('/jabatan')->with(['success' => 'Jabatan Berhasil Dibuat']);
     }
 
@@ -43,22 +50,23 @@ class JabatanController extends Controller
 
     public function update(Request $request, $id)
     {
-        $jabatan= new Jabatan();
-        $jabatan=[
-           'jabatan' => $request->jabatan,
-       ];
+        $jabatan = Jabatan::find($id);
+        $jabatan->jabatan = $request->get('jabatan');
 
-       $jabatan = Jabatan::find($id)->update($jabatan);
+        $jabatan->update();
+       
+       if($jabatan->update()){
+            Alert::success('Jabatan Updated', 'Sucesss');
+        }
        return redirect()->to('/jabatan')->with(['success' => 'Jabatan Berhasil Diubah']);
     }
 
     public function destroy($id)
     {
-        $dataid= $id;
-        dd($dataid);
         $jabatan=Jabatan::find($id);
-        dd($jabatan);
         $jabatan->destroy($id);
+
+        Alert::success('Jabatan Deleted', 'Sucesss');
         return redirect()->back()->with(['success' => 'Jabatan Berhasil Dihapus']);
     }
 }

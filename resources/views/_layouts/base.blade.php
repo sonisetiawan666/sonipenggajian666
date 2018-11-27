@@ -21,12 +21,16 @@
   <link rel="stylesheet" href="{{ asset('/plugins/timepicker/bootstrap-timepicker.min.css') }}">
 
   <link rel="stylesheet" href="{{ asset('/plugins/iCheck/all.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}">
+  <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
+
  
 @yield('css')
 </head>
 <body id="bd-web" class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
+@include('sweet::alert')
 @include('_partials.header')
 @include('_partials.sidebar_main')
 @include('_partials.section')

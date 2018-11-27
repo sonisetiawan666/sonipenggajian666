@@ -14,7 +14,7 @@
         </div>
 
         <div class="panel-body">
-          <form action="{{ URL::to('karyawan/' . $karyawan->id) }}"" method="POST" class="form-horizontal" name="masterForm" 
+          <form action="{{ URL::to('karyawan/' . $karyawan->id) }}"" method="POST" class="form-horizontal" name="masterForm" enctype="multipart/form-data" 
           class="form-validation">
             {{ csrf_field() }}
             {{method_field('PUT')}}
@@ -111,7 +111,7 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Photo </label>
               <div class="col-sm-9">
-                <input class="form-control" name="photo" type="file"/>
+                <input class="form-control" id="photo" name="photo" type="file"/>
               </div>
             </div>
             

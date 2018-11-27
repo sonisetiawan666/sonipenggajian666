@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Karyawan;
 use Carbon\Carbon;
 use App\Jabatan;
+use Alert;
 
 class KaryawanController extends Controller
 {
@@ -39,9 +40,15 @@ class KaryawanController extends Controller
 
         if($request->hasFile('photo')){
             $karyawan->photo = '/upload/photo/'.str_slug($karyawan['nama_karyawan'].'-').'.'.$request->photo->getClientOriginalExtension();
-            $request->photo->move(public_path('/upload/photo/'). $karyawan['photo']);
+            $request->photo->move(public_path('/upload/photo/'), $karyawan['photo']);
         }
+
         $karyawan->save();
+
+        if($karyawan->save()){
+            Alert::success('Karyawan Created', 'Sucesss');
+        }
+       
 
         return redirect()->to('/karyawan')->with(['success' => 'Karyawan Berhasil Dibuat']);
     }
@@ -71,17 +78,29 @@ class KaryawanController extends Controller
         $karyawan->alamat = $request->get('alamat');
         $karyawan->no_telepon = $request->get('no_telp');
         $karyawan->gaji = $request->get('gaji');
-        $karyawan->no_rekening = $request->get('no_rek');
+        $karyawan->no_rekening = $request->get('no_rek');     
+
+        if($request->hasFile('photo')){
+            $karyawan->photo = '/upload/photo/'.str_slug($karyawan['nama_karyawan'].'-').'.'.$request->photo->getClientOriginalExtension();
+            $request->photo->move(public_path('/upload/photo/'), $karyawan['photo']);
+        }
+
         $karyawan->update();
 
-       return redirect()->to('/karyawan')->with(['success' => 'Karyawan Berhasil Diubah']);
+        if($karyawan->update()){
+            Alert::success('Karyawan Updated', 'Sucesss');
+        }
+       
+       return redirect()->to('/karyawan');
     }
 
     public function destroy($id)
     {
         $karyawan=Karyawan::find($id);
         $karyawan->destroy($id);
-        return redirect()->back()->with(['success' => 'Karyawan Berhasil Dihapus']);
+     
+        Alert::success('Karyawan Delete', 'Sucesss');
+        return redirect()->back();
     }
 }
 
