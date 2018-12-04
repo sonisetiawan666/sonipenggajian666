@@ -26,7 +26,7 @@
               </div>
             </div>
 
-             <div class="form-group">
+            <div class="form-group">
               <label class="col-sm-2 control-label">Jabatan </label>
               <div class="col-sm-9">
                  <select class="form-control" name="nm_jabatan">

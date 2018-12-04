@@ -13,6 +13,7 @@
       <ul class="sidebar-menu">
         <li class="header">NE</li>
         <li><a href="{{ URL::to('dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href="{{ URL::to('absensi') }}"><i class="fa fa-users"></i> <span>Absensi</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-database"></i> <span>Master Data</span>
@@ -34,9 +35,11 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li><a href="{{ URL::to('event') }}"><i class="fa fa-dashboard"></i> <span>Event</span></a></li>
+
+        {{-- <li class="treeview">
           <a href="#">
-            <i class="fa fa-database"></i> <span>Transaksi</span>
+            <i class="fa fa-database"></i> <span>Event</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -48,7 +51,7 @@
            <ul class="treeview-menu">
             <li><a href="{{ URL::to('panitia') }}"><i class="fa fa-book"></i>Panitia</a></li>
           </ul>
-        </li>
+        </li> --}}
   
         <li class="treeview">
           <a href="#">

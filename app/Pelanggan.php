@@ -5,21 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Event extends Model
+class Pelanggan extends Model
 {
     use SoftDeletes;
     
     protected $primaryKey = 'id';
-	protected $table = 'event';
+	protected $table = 'pelanggan';
 
 	protected $fillable = [
-		'id', 
-		'id_kategori', 
-		'nama_event',
-		'tempat_event',
-		'tanggal_mulai',
-		'tanggal_selesai',
-		'fee_per_hari',
-		'deskripsi',
+    	'id_pelanggan',
+    	'nama_pelanggan',
+    	'perusahaan',
+    	'alamat',
+    	'no_telepon',
+    	'email',
 	];
 }
