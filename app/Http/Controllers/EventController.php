@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use Carbon\Carbon;
+use Alert;
 
 class EventController extends Controller
 {
@@ -41,10 +42,11 @@ class EventController extends Controller
         $event->nama_event= $request -> get('nama_event');
         $event->tempat_event= $request -> get('tempat_event');
         $event->tanggal_mulai= Carbon::parse($request->get('tanggal_mulai'))->format('y-m-d');
-        $event->tanggal_selesai=  Carbon::parse($request->get('tanggal_selesai'))->format('y-m-d');
+        $event->tanggal_selesai= Carbon::parse($request->get('tanggal_selesai'))->format('y-m-d');
         $event->fee_per_hari= $request -> get('fee_per_hari');
         $event->save();
-        return redirect()->to('/event')->with(['success' => 'Event Berhasil Dibuat']);
+        Alert::success('Tambah Data', 'Berhasil');
+        return redirect()->to('/event');
     }
 
     /**
@@ -86,7 +88,8 @@ class EventController extends Controller
         $event->tanggal_selesai=  Carbon::parse($request->get('tanggal_selesai'))->format('y-m-d');
         $event->fee_per_hari= $request -> get('fee_per_hari');
         $event->update();
-       return redirect()->to('/event')->with(['success' => 'Event Berhasil Diubah']);
+        Alert::success('Ubah Data', 'Berhasil');
+       return redirect()->to('/event');
     }
 
     /**
@@ -99,6 +102,7 @@ class EventController extends Controller
     {
         $event=Event::find($id);
         $event->destroy($id);
-        return redirect()->back()->with(['success' => 'Event Berhasil Dihapus']);
+        Alert::success('Hapus Data', 'Berhasil');
+        return redirect()->back();
     }
 }

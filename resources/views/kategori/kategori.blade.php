@@ -27,7 +27,7 @@
             <table id="datakategori" class="table table-bordered table-striped">
                   <thead>
                     <tr style="border-color:blue;">
-                      <th style="width: 100px" class="actionth">Action</th>
+                      <th style="width: 100px" class="actionth">Aksi</th>
                       <th>Kategori</th>
                     </tr>
                   </thead>
@@ -85,6 +85,11 @@
 @section('script')
 <script>
  $('#datakategori').dataTable({});
+
+ function Deletedata(id){
+   var url = '{{URL('kategori') }}' + '/' + id
+   $("#deleteac").attr("action", url);
+  }
 </script>
 
 @endsection

@@ -30,10 +30,9 @@ class JabatanController extends Controller
 
         
         if($jabatan->save()){
-            Alert::success('Jabatan Created', 'Sucesss');
+            Alert::success('Tambah Data', 'Berhasil');
         }
-
-        return redirect()->to('/jabatan')->with(['success' => 'Jabatan Berhasil Dibuat']);
+        return redirect()->to('/jabatan');
     }
 
 
@@ -56,9 +55,9 @@ class JabatanController extends Controller
         $jabatan->update();
        
        if($jabatan->update()){
-            Alert::success('Jabatan Updated', 'Sucesss');
+        Alert::success('Ubah Data', 'Berhasil');
         }
-       return redirect()->to('/jabatan')->with(['success' => 'Jabatan Berhasil Diubah']);
+       return redirect()->to('/jabatan');
     }
 
     public function destroy($id)
@@ -66,7 +65,7 @@ class JabatanController extends Controller
         $jabatan=Jabatan::find($id);
         $jabatan->destroy($id);
 
-        Alert::success('Jabatan Deleted', 'Sucesss');
-        return redirect()->back()->with(['success' => 'Jabatan Berhasil Dihapus']);
+        Alert::success('Hapus Data', 'Berhasil');
+        return redirect()->back();
     }
 }

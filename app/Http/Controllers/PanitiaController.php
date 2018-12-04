@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Panitia;
+use Alert;
 
 class PanitiaController extends Controller
 {
@@ -39,6 +40,7 @@ class PanitiaController extends Controller
         $panitia = new panitia();
         $panitia->posisi = $request->get('posisi');
         $panitia->save();
+        Alert::success('Tambah Data', 'Berhasil');
         return redirect()->to('/panitia')->with(['success' => 'Panitia Berhasil Dibuat']);
     }
 
@@ -80,6 +82,7 @@ class PanitiaController extends Controller
        ];
 
        $panitia = Panitia::find($id)->update($panitia);
+       Alert::success('Ubah Data', 'Berhasil');
        return redirect()->to('/panitia')->with(['success' => 'Panitia Berhasil Diubah']);
     }
 
@@ -93,6 +96,7 @@ class PanitiaController extends Controller
     {
         $panitia=Panitia::find($id);
         $panitia->destroy($id);
+        Alert::success('Hapus Data', 'Berhasil');
         return redirect()->back()->with(['success' => 'Panitia Berhasil Dihapus']);
     }
 }

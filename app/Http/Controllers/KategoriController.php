@@ -25,7 +25,8 @@ class KategoriController extends Controller
         $kategori= new Kategori();
         $kategori->kategori = $request->get('kategori');
         $kategori->save();
-        return redirect()->to('/kategori')->with(['success' => 'Kategori Berhasil Dibuat']);
+        Alert::success('Tambah Data', 'Berhasil');
+        return redirect()->to('/kategori');
     }
 
 
@@ -48,14 +49,16 @@ class KategoriController extends Controller
        ];
 
        $kategori = Kategori::find($id)->update($kategori);
-       return redirect()->to('/kategori')->with(['success' => 'Kategori Berhasil Diubah']);
+       Alert::success('Ubah Data', 'Berhasil');
+       return redirect()->to('/kategori');
     }
 
     public function destroy($id)
     {
         $kategori=Kategori::find($id);
         $kategori->destroy($id);
-        return redirect()->back()->with(['success' => 'Kategori Berhasil Dihapus']);
+        Alert::success('Hapus Data', 'Berhasil');
+        return redirect()->back();
     }
 }
 

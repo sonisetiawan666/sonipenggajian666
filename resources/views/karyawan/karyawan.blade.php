@@ -20,7 +20,7 @@
             <table id="datakaryawan" class="table table-bordered table-striped">
                   <thead>
                     <tr style="border-color:blue;">
-                      <th style="width: 100px" class="actionth">Action</th>
+                      <th style="width: 100px" class="actionth">Aksi</th>
                       <th>Nama</th>
                        <th>Alamat</th>
                       <th>No.Telp</th>

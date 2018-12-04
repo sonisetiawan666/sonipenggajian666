@@ -27,6 +27,7 @@ class UserController extends Controller
         $user->username= $request->get('username');
         $user->password = $request->get('password');
         $user->save();
+        Alert::success('Tambah Data', 'Berhasil');
         return redirect()->to('/user')->with(['success' => 'User Berhasil Dibuat']);
     }
 
@@ -56,6 +57,7 @@ class UserController extends Controller
        ];
 
        $user = User::find($id)->update($user);
+       Alert::success('Ubah Data', 'Berhasil');
        return redirect()->to('/user')->with(['success' => 'User Berhasil Diubah']);
     }
 
@@ -64,6 +66,7 @@ class UserController extends Controller
         
         $user=User::find($id);
         $user->destroy($id);
+        Alert::success('Hapus Data', 'Berhasil');
         return redirect()->back()->with(['success' => 'User Berhasil Dihapus']);
     }
 }

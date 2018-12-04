@@ -46,11 +46,10 @@ class KaryawanController extends Controller
         $karyawan->save();
 
         if($karyawan->save()){
-            Alert::success('Karyawan Created', 'Sucesss');
+            Alert::success('Tambah Data', 'Berhasil');
         }
-       
 
-        return redirect()->to('/karyawan')->with(['success' => 'Karyawan Berhasil Dibuat']);
+        return redirect()->to('/karyawan');
     }
 
 
@@ -88,7 +87,7 @@ class KaryawanController extends Controller
         $karyawan->update();
 
         if($karyawan->update()){
-            Alert::success('Karyawan Updated', 'Sucesss');
+            Alert::success('Ubah Data', 'Berhasil');
         }
        
        return redirect()->to('/karyawan');
@@ -99,7 +98,7 @@ class KaryawanController extends Controller
         $karyawan=Karyawan::find($id);
         $karyawan->destroy($id);
      
-        Alert::success('Karyawan Delete', 'Sucesss');
+        Alert::success('Hapus Data', 'Berhasil');
         return redirect()->back();
     }
 }
