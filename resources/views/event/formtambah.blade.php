@@ -26,6 +26,18 @@
             </div>
 
             <div class="form-group">
+                <label class="col-sm-2 control-label">Kategori </label>
+                <div class="col-sm-9">
+                  <select class="form-control" name="nm_kategori">
+                    <option value=""></option>
+                    @foreach ($list_kategori as $kategori)
+                      <option value="{{$kategori->id}}">{{$kategori->kategori}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+
+            <div class="form-group">
               <label class="col-sm-2 control-label">Tempat Event</label>
               <div class="col-sm-9">
                 <input class="form-control" name="tempat_event" type="text" required/>
@@ -62,6 +74,14 @@
                 <input class="form-control" name="fee_per_hari" type="number" required/>
               </div>
             </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Deskripsi</label>
+              <div class="col-sm-9">
+                <textarea class="form-control" name="deskripsi" required/></textarea>
+              </div>
+            </div>
+
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-12">
                 <button type="submit" class="btn btn-success" type="button">Save</button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use Carbon\Carbon;
+use App\Kategori;
 
 class EventController extends Controller
 {
@@ -26,7 +27,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view("event/formtambah");
+        $list_kategori = Kategori::all();
+        return view("event/formtambah", compact('list_kategori'));
     }
 
     /**
@@ -39,10 +41,12 @@ class EventController extends Controller
     {
         $event = new Event();
         $event->nama_event= $request -> get('nama_event');
+        $event->id_kategori= $request -> get('nm_kategori');
         $event->tempat_event= $request -> get('tempat_event');
         $event->tanggal_mulai= Carbon::parse($request->get('tanggal_mulai'))->format('y-m-d');
         $event->tanggal_selesai=  Carbon::parse($request->get('tanggal_selesai'))->format('y-m-d');
         $event->fee_per_hari= $request -> get('fee_per_hari');
+        $event->deskripsi = $request -> get('deskripsi');
         $event->save();
         return redirect()->to('/event')->with(['success' => 'Event Berhasil Dibuat']);
     }
@@ -55,7 +59,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event::find($id);
+        return view('detailevent.detailevent');
     }
 
     /**
@@ -66,8 +71,9 @@ class EventController extends Controller
      */
     public function edit($id)
     {
+        $list_kategori = Kategori::all();
         $event = Event::find($id);
-        return view('event.formubah', compact('event'));
+        return view('event.formubah', compact('event','list_kategori'));
     }
 
     /**
@@ -81,10 +87,12 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $event->nama_event= $request -> get('nama_event');
+        $event->id_kategori= $request -> get('nm_kategori');
         $event->tempat_event= $request -> get('tempat_event');
         $event->tanggal_mulai= Carbon::parse($request->get('tanggal_mulai'))->format('y-m-d');
         $event->tanggal_selesai=  Carbon::parse($request->get('tanggal_selesai'))->format('y-m-d');
         $event->fee_per_hari= $request -> get('fee_per_hari');
+        $event->deskripsi = $request -> get('deskripsi');
         $event->update();
        return redirect()->to('/event')->with(['success' => 'Event Berhasil Diubah']);
     }

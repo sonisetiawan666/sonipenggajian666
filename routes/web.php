@@ -34,6 +34,8 @@ Route::resource('event', 'EventController');
 
 Route::resource('panitia', 'PanitiaController');
 
+Route::resource('absensi', 'AbsensiController');
+
 
 });
 
