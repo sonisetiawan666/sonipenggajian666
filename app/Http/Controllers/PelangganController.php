@@ -80,7 +80,7 @@ class PelangganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pelanggan= new Pelanggan();
+        $pelanggan = Pelanggan::find($id);
         $pelanggan->nama_pelanggan = $request->get('nama_pelanggan');
         $pelanggan->perusahaan = $request->get('perusahaan');
         $pelanggan->alamat = $request->get('alamat');
@@ -88,7 +88,6 @@ class PelangganController extends Controller
         $pelanggan->email = $request->get('email');
         $pelanggan->update();
         Alert::success('Ubah Data', 'Berhasil');
-        
         return redirect()->to('/pelanggan');
     }
 
@@ -102,7 +101,6 @@ class PelangganController extends Controller
     {
         $pelanggan=Pelanggan::find($id);
         $pelanggan->destroy($id);
-     
         Alert::success('Hapus Data', 'Berhasil');
         return redirect()->back();
     }
