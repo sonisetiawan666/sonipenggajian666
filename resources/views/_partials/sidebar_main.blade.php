@@ -34,6 +34,10 @@
             <li><a href="{{ URL::to('kategori') }}"><i class="fa fa-book"></i>Kategori</a></li>
           </ul>
         </li>
+        <ul class="treeview-menu">
+            <li><a href="{{ URL::to('pelanggan') }}"><i class="fa fa-book"></i>Pelanggan</a></li>
+          </ul>
+        </li>
 
         <li><a href="{{ URL::to('event') }}"><i class="fa fa-dashboard"></i> <span>Event</span></a></li>
 
