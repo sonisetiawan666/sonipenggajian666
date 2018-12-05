@@ -37,7 +37,8 @@
                             <td class="action">
                               <div class="btn-group btn-ac">
                                 <a href="{{ URL::to('panitia/' . $panitia->id . '/edit') }}" class="btn btn-flat btn-warning" type="button"><i class="fa fa-pencil"></i></a>
-                                <a href="#" type="button" data-toggle="modal" data-target="#hapuspanitia" class="btn btn-flat btn-danger"><i class="fa fa-times"></i></a> 
+                                <a href="#" type="button" onclick="Deletedata({{$panitia->id}})" data-toggle="modal" data-target="#hapuspanitia" 
+                                class="btn btn-flat btn-danger"><i class="fa fa-times"></i></a>  
                               </div>
                             </td>
                             <td>{{$panitia->posisi}}</td>
@@ -64,7 +65,7 @@
                 <div class="modal-footer modal-footer-center">
                   <div class="btn-group btn-ac-d">
                     @if(!empty($panitia))
-                    <form action="{{URL('panitia/'. $panitia->id) }}" method="POST">
+                    <form action="{{URL('panitia/'. $panitia->id) }}" id="deleteac" method="POST">
                       {{ csrf_field() }}
                       {{ method_field('DELETE') }}
                       <a href=""><button type="submit" class="btn btn-flat btn-danger">Yakin</i></button></a>
@@ -87,7 +88,7 @@
  $('#datapanitia').dataTable({});
 
  function Deletedata(id){
-   var url = '{{URL('event') }}' + '/' + id
+   var url = '{{URL('panitia') }}' + '/' + id
    $("#deleteac").attr("action", url);
   }
 </script>

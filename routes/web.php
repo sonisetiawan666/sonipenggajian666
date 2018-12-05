@@ -36,6 +36,8 @@ Route::resource('panitia', 'PanitiaController');
 
 Route::resource('absensi', 'AbsensiController');
 
+Route::resource('pelanggan', 'PelangganController');
+
 
 });
 

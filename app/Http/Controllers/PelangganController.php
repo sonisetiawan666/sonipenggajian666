@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pelanggan;
+use Alert;
 
 class PelangganController extends Controller
 {
@@ -42,8 +44,8 @@ class PelangganController extends Controller
         $pelanggan->no_telepon = $request->get('no_telepon');
         $pelanggan->email = $request->get('email');
         $pelanggan->save();
-        Alert::success('Pelanggan Created', 'Sucesss');
-        return redirect()->to('/pelanggan')->with(['success' => 'Pelanggan Berhasil Dibuat']);
+        Alert::success('Tambah Data', 'Berhasil');
+        return redirect()->to('/pelanggan');
     }
 
     /**
@@ -85,8 +87,9 @@ class PelangganController extends Controller
         $pelanggan->no_telepon = $request->get('no_telepon');
         $pelanggan->email = $request->get('email');
         $pelanggan->update();
-        Alert::success('Pelanggan Updated', 'Sucesss');
-        return redirect()->to('/pelanggan')->with(['success' => 'Pelanggan Berhasil Diubah']);
+        Alert::success('Ubah Data', 'Berhasil');
+        
+        return redirect()->to('/pelanggan');
     }
 
     /**
@@ -100,7 +103,7 @@ class PelangganController extends Controller
         $pelanggan=Pelanggan::find($id);
         $pelanggan->destroy($id);
      
-        Alert::success('Pelanggan Delete', 'Sucesss');
+        Alert::success('Hapus Data', 'Berhasil');
         return redirect()->back();
     }
 }

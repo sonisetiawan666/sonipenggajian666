@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use Carbon\Carbon;
-
+use Alert;
 use App\Kategori;
 
 class EventController extends Controller

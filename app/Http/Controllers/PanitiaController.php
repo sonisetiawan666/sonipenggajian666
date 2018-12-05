@@ -41,7 +41,7 @@ class PanitiaController extends Controller
         $panitia->posisi = $request->get('posisi');
         $panitia->save();
         Alert::success('Tambah Data', 'Berhasil');
-        return redirect()->to('/panitia')->with(['success' => 'Panitia Berhasil Dibuat']);
+        return redirect()->to('/panitia');
     }
 
     /**
@@ -83,7 +83,7 @@ class PanitiaController extends Controller
 
        $panitia = Panitia::find($id)->update($panitia);
        Alert::success('Ubah Data', 'Berhasil');
-       return redirect()->to('/panitia')->with(['success' => 'Panitia Berhasil Diubah']);
+       return redirect()->to('/panitia');
     }
 
     /**
@@ -97,6 +97,6 @@ class PanitiaController extends Controller
         $panitia=Panitia::find($id);
         $panitia->destroy($id);
         Alert::success('Hapus Data', 'Berhasil');
-        return redirect()->back()->with(['success' => 'Panitia Berhasil Dihapus']);
+        return redirect()->back();
     }
 }

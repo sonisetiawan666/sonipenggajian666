@@ -37,7 +37,8 @@
                             <td class="action">
                               <div class="btn-group btn-ac">
                                 <a href="{{ URL::to('kategori/' . $kategori->id . '/edit') }}"  class="btn btn-flat btn-warning" type="button"><i class="fa fa-pencil"></i></a>
-                                <a href="#" type="button" data-toggle="modal" data-target="#hapuskategori" class="btn btn-flat btn-danger"><i class="fa fa-times"></i></a> 
+                                <a href="#" type="button" onclick="Deletedata({{$kategori->id}})" data-toggle="modal" data-target="#hapuskategori" 
+                                class="btn btn-flat btn-danger"><i class="fa fa-times"></i></a> 
                               </div>
                             </td>
                             <td>{{$kategori->kategori}}</td>
@@ -64,7 +65,7 @@
                 <div class="modal-footer modal-footer-center">
                   <div class="btn-group btn-ac-d">
                       @if(!empty($kategori))
-                        <form action="{{URL('kategori/'. $kategori->id) }}" method="POST">
+                        <form action="{{URL('kategori/'. $kategori->id) }}" id="deleteac" method="POST">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                         <a href=""><button type="submit" class="btn btn-flat btn-danger">Yakin</i></button></a>

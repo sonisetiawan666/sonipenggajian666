@@ -34,9 +34,8 @@
                               <div class="btn-group btn-ac">
                                 <a href="{{ URL::to('event/'.$event->id . '/edit') }}" 
                                 class="btn btn-flat btn-warning" type="button"><i class="fa fa-pencil"></i></a>
-                                <a href="{{ URL::to('event/'.$event->id) }}" 
-                                  class="btn btn-flat btn-success" type="button"><i class="fa fa-eye"></i></a>
-                                <a href="#" type="button" data-toggle="modal" data-target="#hapusevent" 
+                                <a href="{{ URL::to('event/'.$event->id) }}" class="btn btn-flat btn-success" type="button"><i class="fa fa-eye"></i></a>
+                                <a href="#" type="button" onclick="Deletedata({{$event->id}})" data-toggle="modal" data-target="#hapusevent" 
                                 class="btn btn-flat btn-danger"><i class="fa fa-times"></i></a> 
                               </div>
                             </td>
@@ -68,7 +67,7 @@
                 <div class="modal-footer modal-footer-center">
                   <div class="btn-group btn-ac-d">
                     @if(!empty($event))
-                    <form action="{{URL('event/'. $event->id) }}" method="POST">
+                    <form action="{{URL('event/'. $event->id) }}" id="deleteac" method="POST">
                       {{ csrf_field() }}
                       {{ method_field('DELETE') }}
                       <a href=""><button type="submit" class="btn btn-flat btn-danger">Yakin</i></button></a>
@@ -90,10 +89,11 @@
 <script>
  $('#dataevent').dataTable({});
 
-  function Deletedata(id){
+
+ function Deletedata(id){
    var url = '{{URL('event') }}' + '/' + id
    $("#deleteac").attr("action", url);
-  }
+ }
 </script>
 
 @endsection
