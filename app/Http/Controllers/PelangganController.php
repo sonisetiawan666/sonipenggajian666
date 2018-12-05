@@ -15,7 +15,7 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        $list_pelanggan=Pelanggan::all();
+        $list_pelanggan = Pelanggan::all();
         return view('pelanggan.pelanggan', compact('list_pelanggan'));
     }
 
@@ -37,7 +37,7 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        $pelanggan= new Pelanggan();
+        $pelanggan = new Pelanggan();
         $pelanggan->nama_pelanggan = $request->get('nama_pelanggan');
         $pelanggan->perusahaan = $request->get('perusahaan');
         $pelanggan->alamat = $request->get('alamat');

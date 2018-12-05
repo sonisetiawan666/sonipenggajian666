@@ -28,7 +28,7 @@ class UserController extends Controller
         $user->password = $request->get('password');
         $user->save();
         Alert::success('Tambah Data', 'Berhasil');
-        return redirect()->to('/user')->with(['success' => 'User Berhasil Dibuat']);
+        return redirect()->to('/user');
     }
 
     /**
@@ -58,7 +58,7 @@ class UserController extends Controller
 
        $user = User::find($id)->update($user);
        Alert::success('Ubah Data', 'Berhasil');
-       return redirect()->to('/user')->with(['success' => 'User Berhasil Diubah']);
+       return redirect()->to('/user');
     }
 
     public function destroy($id)
@@ -67,6 +67,6 @@ class UserController extends Controller
         $user=User::find($id);
         $user->destroy($id);
         Alert::success('Hapus Data', 'Berhasil');
-        return redirect()->back()->with(['success' => 'User Berhasil Dihapus']);
+        return redirect()->back();
     }
 }

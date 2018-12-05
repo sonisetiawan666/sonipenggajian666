@@ -30,8 +30,7 @@
                             <td class="action">
                               <div class="btn-group btn-ac">
                                 <a href="{{ URL::to('jabatan/' . $jabatan->id . '/edit') }}"  class="btn btn-flat btn-warning" type="button"><i class="fa fa-pencil"></i></a>
-                                <a href="#" type="button" onclick="Deletedata({{$jabatan->id}})" data-toggle="modal" data-target="#hapusjabatan" class="btn btn-flat btn-danger"><i class="fa fa-times"></i></a> 
-                                <a href="#" type="button" onclick="Deletedata({{$jabatan->id}})" data-toggle="modal" data-target="#hapusevent" 
+                                <a href="#" type="button" onclick="Deletedata({{$jabatan->id}})" data-toggle="modal" data-target="#hapusjabatan" 
                                 class="btn btn-flat btn-danger"><i class="fa fa-times"></i></a> 
                               </div>
                             </td>
