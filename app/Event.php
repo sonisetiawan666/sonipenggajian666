@@ -22,4 +22,9 @@ class Event extends Model
 		'fee_per_hari',
 		'deskripsi',
 	];
+
+	public function kategori()
+    {
+        return $this->belongsTo('App\Kategori','id_kategori');
+    }
 }

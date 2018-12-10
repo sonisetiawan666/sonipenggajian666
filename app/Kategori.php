@@ -15,4 +15,9 @@ class Kategori extends Model
 	protected $fillable = [
     	'id', 'kategori'
 	];
+
+	public function event()
+    {
+        return $this->hasMany('App\Event');
+    }
 }
