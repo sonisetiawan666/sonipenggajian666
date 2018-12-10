@@ -105,8 +105,8 @@
             
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-12">
-                <button type="submit" class="btn btn-success" type="button">Save</button>
-                <a href="{{ URL::to('/karyawan')}}" class="btn btn-warning" type="button">Cancel</a>
+                <button type="submit" class="btn btn-success" type="button">Simpan</button>
+                <a href="{{ URL::to('/karyawan')}}" class="btn btn-warning" type="button">Batal</a>
               </div>
             </div>
 
