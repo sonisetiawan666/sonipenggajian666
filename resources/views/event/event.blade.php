@@ -21,6 +21,7 @@
                     <tr style="border-color:blue;">
                       <th style="width: 100px" class="actionth">Aksi</th>
                       <th>Nama Event</th>
+                      <th>Kategori</th>
                        <th>Tempat Event</th>
                       <th>Tanggal Mulai</th>
                       <th>Tanggal Selesai</th>
@@ -40,6 +41,7 @@
                               </div>
                             </td>
                             <td>{{$event->nama_event}}</td>
+                            <td>{{$event->kategori->kategori}}</td>
                             <td>{{$event->tempat_event}}</td>
                             <td>{{$event->tanggal_mulai}}</td>
                             <td>{{$event->tanggal_selesai}}</td>
