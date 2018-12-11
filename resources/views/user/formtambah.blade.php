@@ -14,7 +14,7 @@
         </div>
 
         <div class="panel-body">
-          <form action="{{ URL::to('/user')}}" method="POST" class="form-horizontal" name="masterForm" class="form-validation">
+          <form action="{{ URL::to('/user')}}" method="POST" autocomplete="off" class="form-horizontal" name="masterForm" class="form-validation">
             {{ csrf_field() }}
 
              <div class="form-group">
