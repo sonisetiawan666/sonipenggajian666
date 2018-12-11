@@ -14,7 +14,7 @@
         </div>
 
         <div class="panel-body">
-          <form action="{{ URL::to('event/' . $event->id) }}" method="POST" class="form-horizontal" name="masterForm" 
+          <form action="{{ URL::to('event/' . $event->id) }}" method="POST" autocomplete="off" class="form-horizontal" name="masterForm" 
           class="form-validation">
             {{ csrf_field() }}
             {{method_field('PUT')}}
@@ -37,6 +37,22 @@
                           selected
                         @endif
                         >{{$kategori->kategori}}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Pelanggan </label>
+                <div class="col-sm-9">
+                   <select class="form-control" name="nm_pelanggan">
+                   <option value=""></option>
+                    @foreach ($list_pelanggan as $pelanggan)
+                      <option value="{{$pelanggan->id}}"
+                        @if($pelanggan->id == $event->id_pelanggan)
+                          selected
+                        @endif
+                        >{{$pelanggan->nama_pelanggan}}</option>
                     @endforeach
                   </select>
                 </div>

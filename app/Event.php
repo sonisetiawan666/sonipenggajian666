@@ -26,5 +26,10 @@ class Event extends Model
 	public function kategori()
     {
         return $this->belongsTo('App\Kategori','id_kategori');
+	}
+	
+	public function pelanggan()
+    {
+        return $this->belongsTo('App\Pelanggan','id_pelanggan');
     }
 }

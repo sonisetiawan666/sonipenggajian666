@@ -14,7 +14,7 @@
         </div>
 
         <div class="panel-body">
-          <form action="{{ URL::to('karyawan/' . $karyawan->id) }}"" method="POST" class="form-horizontal" name="masterForm" enctype="multipart/form-data" 
+          <form action="{{ URL::to('karyawan/' . $karyawan->id) }}"" method="POST" autocomplete="off" class="form-horizontal" name="masterForm" enctype="multipart/form-data" 
           class="form-validation">
             {{ csrf_field() }}
             {{method_field('PUT')}}

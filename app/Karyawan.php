@@ -18,7 +18,7 @@ class Karyawan extends Model
     	'tempat_lahir',
     	'tanggal_lahir',
     	'jenis_kelamin',
-    	'alamat',
+    	'alamat',   
     	'no_telepon',
     	'status_karyawan',
     	'no_rekening',
@@ -26,9 +26,14 @@ class Karyawan extends Model
     	'photo',
 	];
 
-	public function users()
+	public function user()
     {
-        return $this->belongsTo('App/User','id_karyawan');
+        return $this->belongsTo('App\User','id_karyawan');
+	}
+	
+	public function jabatan()
+    {
+        return $this->belongsTo('App\Jabatan','id_jabatan');
     }
 
 }

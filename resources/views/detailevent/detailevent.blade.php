@@ -42,11 +42,8 @@
                 <div class="tab-pane fade in active" id="home">
                     <div class="row">
                         <div class="col-md-6 col-sm-6 col-xs-12 det-des">
-                            <h2>Maharaja Suratma</h2>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. 
-                            Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.A small river named Duden flows by their place and supplies it with the necessary regelialia. 
-                            It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                            <h2>{{$eventdata->nama_event}}</h2>
+                            <p>{{$eventdata->deskripsi}}</p>
                         </div>
 
                         <div class="col-md-6 col-sm-6 col-xs-12 det-event">
@@ -56,31 +53,31 @@
                                     <tbody>
                                     <tr>
                                         <td>Tanggal Mulai</td>
-                                        <td class="td-r">Web Development</td>
+                                        <td class="td-r">{{$eventdata->tanggal_mulai}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Tanggal Berakhir</td>
-                                        <td class="td-r">Web Development</td>
+                                        <td>Tanggal Selesai</td>
+                                        <td class="td-r">{{$eventdata->tanggal_selesai}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Customer</td>
-                                        <td class="td-r">Programming Language</td>
+                                        <td>Pelanggan</td>
+                                        <td class="td-r">{{$eventdata->pelanggan->nama_pelanggan}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Perusahaan</td>
+                                        <td class="td-r">{{$eventdata->perusahaan}}</td>
                                     </tr>
                                     <tr>
                                         <td>Alamat</td>
-                                        <td class="td-r">Web Development</td>
+                                        <td class="td-r">{{$eventdata->alamat}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Fee Event</td>
-                                        <td class="td-r">Web Design</td>
+                                        <td>No Telepon</td>
+                                        <td class="td-r">{{$eventdata->no_telepon}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Phone Customer</td>
-                                        <td class="td-r">Programming Language</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Email Customer</td>
-                                        <td class="td-r">App Development</td>
+                                        <td>Email</td>
+                                        <td class="td-r">{{$eventdata->email}}</td>
                                     </tr>
                                     <tr>
                                         <td>Jumlah Panitia</td>
@@ -91,8 +88,7 @@
                             </div>
                         </div>
                     </div>
-                </div>   
-
+                </div>
                 <div class="tab-pane fade" id="profile">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -117,10 +113,10 @@
                                                                 <img class="pull-left img-circle nav-user-photo" width="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxhcCYW4QDWMOjOuUTxOd50KcJvK-rop9qE9zRltSbVS_bO-cfWA" />  
                                                             </td>
                                                             <td>
-                                                                Herbert Hoover<br>
+                                                               indradana<br>
                                                             </td>
                                                             <td>
-                                                                Builder Sales Agent
+                                                               www
                                                             </td>
                                                             <td>
                                                                 Builder Sales Agent

@@ -20,4 +20,6 @@ class Pelanggan extends Model
     	'no_telepon',
     	'email',
 	];
+
+
 }

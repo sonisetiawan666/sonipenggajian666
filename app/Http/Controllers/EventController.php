@@ -7,6 +7,8 @@ use App\Event;
 use Carbon\Carbon;
 use Alert;
 use App\Kategori;
+use Session;
+use App\Pelanggan;
 
 class EventController extends Controller
 {
@@ -29,7 +31,8 @@ class EventController extends Controller
     public function create()
     {
         $list_kategori = Kategori::all();
-        return view("event/formtambah", compact('list_kategori'));
+        $list_pelanggan = Pelanggan::all();
+        return view("event/formtambah", compact('list_kategori','list_pelanggan'));
     }
 
     /**
@@ -43,6 +46,7 @@ class EventController extends Controller
         $event = new Event();
         $event->nama_event= $request -> get('nama_event');
         $event->id_kategori= $request -> get('nm_kategori');
+        $event->id_pelanggan= $request -> get('nm_pelanggan');
         $event->tempat_event= $request -> get('tempat_event');
         $event->tanggal_mulai= Carbon::parse($request->get('tanggal_mulai'))->format('y-m-d');
         $event->tanggal_selesai= Carbon::parse($request->get('tanggal_selesai'))->format('y-m-d');
@@ -61,8 +65,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event = Event::find($id);
-        return view('detailevent.detailevent');
+        $eventdata = Event::find($id);
+        return view('detailevent.detailevent', compact('eventdata'));
     }
 
     /**
@@ -74,8 +78,9 @@ class EventController extends Controller
     public function edit($id)
     {
         $list_kategori = Kategori::all();
+        $list_pelanggan = Pelanggan::all();
         $event = Event::find($id);
-        return view('event.formubah', compact('event','list_kategori'));
+        return view('event.formubah', compact('event','list_kategori','list_pelanggan'));
     }
 
     /**
@@ -90,6 +95,7 @@ class EventController extends Controller
         $event = Event::find($id);
         $event->nama_event= $request -> get('nama_event');
         $event->id_kategori= $request -> get('nm_kategori');
+        $event->id_pelanggan= $request -> get('nm_pelanggan');
         $event->tempat_event= $request -> get('tempat_event');
         $event->tanggal_mulai= Carbon::parse($request->get('tanggal_mulai'))->format('y-m-d');
         $event->tanggal_selesai=  Carbon::parse($request->get('tanggal_selesai'))->format('y-m-d');

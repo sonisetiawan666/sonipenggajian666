@@ -22,6 +22,7 @@
                     <tr style="border-color:blue;">
                       <th style="width: 100px" class="actionth">Aksi</th>
                       <th>Nama</th>
+                      <th>Jabatan</th>
                        <th>Alamat</th>
                       <th>No.Telp</th>
                       <th>No.Rekening</th>
@@ -38,6 +39,7 @@
                               </div>
                             </td>
                             <td>{{$karyawan->nama_karyawan}}</td>
+                            <td>{{$karyawan->jabatan->jabatan}}</td>
                              <td>{{$karyawan->alamat}}</td>
                             <td>{{$karyawan->no_telepon}}</td>
                             <td>{{$karyawan->no_rekening}}</td>
