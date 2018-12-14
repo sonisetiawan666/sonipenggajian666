@@ -26,10 +26,6 @@ class Karyawan extends Model
     	'photo',
 	];
 
-	public function user()
-    {
-        return $this->belongsTo('App\User','id_karyawan');
-	}
 	
 	public function jabatan()
     {

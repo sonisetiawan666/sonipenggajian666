@@ -8,7 +8,10 @@ use Carbon\Carbon;
 use Alert;
 use App\Kategori;
 use Session;
+use App\Karyawan;
 use App\Pelanggan;
+use App\User;
+use App\Jabatan;
 
 class EventController extends Controller
 {
@@ -118,5 +121,11 @@ class EventController extends Controller
         $event->destroy($id);
         Alert::success('Hapus Data', 'Berhasil');
         return redirect()->back();
+    }
+    
+    public function userlist()
+    {
+        $userlist = User::with('karyawan')->get();
+        return $userlist;
     }
 }

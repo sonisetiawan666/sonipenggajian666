@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePanitiaTable extends Migration
+class AddDataPanitia extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,7 @@ class CreatePanitiaTable extends Migration
      */
     public function up()
     {
-        Schema::create('panitia', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -26,6 +23,6 @@ class CreatePanitiaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('panitia');
+        //
     }
 }

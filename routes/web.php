@@ -39,5 +39,7 @@ Route::resource('absensi', 'AbsensiController');
 Route::resource('pelanggan', 'PelangganController');
 
 
+Route::get('userlist', 'EventController@userlist')->name('user-list');
+
 });
 
