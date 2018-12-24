@@ -2,9 +2,7 @@
     <section class="sidebar">
       <div class="user-panel">
         <div class="pull-left image">
-
-          <img src="{{Auth::user()->karyawan}}" class="img-circle">
-
+          <img src="{{ asset('') }}{{Auth::user()->karyawan->photo}}" class="img-circle"  alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{Auth::user()->name }}</p>
@@ -42,22 +40,7 @@
  
 
         <li><a href="{{ URL::to('event') }}"><i class="fa fa-dashboard"></i> <span>Event</span></a></li>
-
-        {{-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-database"></i> <span>Event</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{ URL::to('event') }}"><i class="fa fa-book"></i>Event</a></li>
-          </ul>
-
-           <ul class="treeview-menu">
-            <li><a href="{{ URL::to('panitia') }}"><i class="fa fa-book"></i>Panitia</a></li>
-          </ul>
-        </li> --}}
+        <li><a href="{{ URL::to('event') }}"><i class="fa fa-money"></i> <span>Pengajian</span></a></li>
   
         <li class="treeview">
           <a href="#">

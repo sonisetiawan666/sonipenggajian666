@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Event;
 use Carbon\Carbon;
+use Yajra\DataTables\Datatables;
 use Alert;
-use App\Kategori;
 use Session;
+use App\Event;
+use App\Kategori;
 use App\Karyawan;
 use App\Pelanggan;
 use App\User;
 use App\Jabatan;
+use App\Panitia;
+use App\Absensievent;
+use App\DetAbsenEvent;
 
 class EventController extends Controller
 {
@@ -66,11 +70,6 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $eventdata = Event::find($id);
-        return view('detailevent.detailevent', compact('eventdata'));
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -122,10 +121,179 @@ class EventController extends Controller
         Alert::success('Hapus Data', 'Berhasil');
         return redirect()->back();
     }
-    
-    public function userlist()
+
+    public function detailevent($id_event)
     {
-        $userlist = User::with('karyawan')->get();
+        $eventdata = Event::find($id_event);
+        $id_event=Session::put('id_event',$id_event);
+        return view('detailevent.detailevent', compact('eventdata'));
+    }
+
+    
+    public function userlist(Request $request)
+    {
+        $id_event = $request->session()->get('id_event');
+
+        $userlist = User::with(['karyawan'=> function($data){
+            $data->with('jabatan');
+        }])->whereDoesntHave('panitia', function($query) use ($id_event){
+            $query->where('id_event','=', $id_event);
+        })->orderBy('created_at','DESC')
+          ->get();
+
         return $userlist;
+    }
+
+    public function panitialist(Request $request)
+    {
+        $id_event = $request->session()->get('id_event');
+
+        $panitialist = Panitia::where('id_event','=', $id_event)
+                                ->orderBy('created_at','DESC')
+                                ->get(); 
+
+        return Datatables::of($panitialist)
+        ->addColumn('panitia-nama', function($panitialist){
+            return '<td>'.$panitialist->user->name.'</td>';
+        })
+        ->addColumn('panitia-jabatan', function($panitialist){
+            return '<td>'.$panitialist->user->karyawan->jabatan->jabatan.'</td>';
+        })
+        ->addColumn('action', function($panitialist){
+            return '<a onclick="deletePanitia(\''.$panitialist->id.'\')" class="btn btn-danger btn-flat">Delete</a>';
+        })->rawColumns(['panitia-nama','panitia-jabatan', 'action'])->make(true);
+    }
+
+    public function storepanitia(Request $request)
+    {
+        $loop = $request->get('userp');
+        foreach ($loop as $value){
+            $panitia = new Panitia;
+            $panitia->id_event = $request['id_event'];
+            $panitia->id_user = $value;
+            $panitia->save();
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Panitia Berhasil Dibuat'
+        ]);
+    }
+
+    public function destroypanitia($id)
+    {
+        Panitia::destroy($id);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Panitia Berhasil Dihapus'
+        ]);
+    }
+
+    public function dateevent(Request $request)
+    {
+        $id_event = $request->session()->get('id_event');
+        $dateevent= Event::where('id','=',$id_event)->first();
+        return $dateevent;
+    }
+
+
+
+    public function dataabsensi(Request $request)
+    {
+        $id_event = $request->session()->get('id_event');
+        $listabsensievent = AbsensiEvent::where('id_event','=', $id_event)
+        ->orderBy('created_at','DESC')
+        ->get(); 
+
+        return Datatables::of($listabsensievent)
+        ->addColumn('status', function($listabsensievent){
+            if($listabsensievent->status == "0"){
+                return '<td>Sudah Generate</td>';
+            }else{
+                return '<td>Belum Digenerate</td>';
+            }
+        })
+        ->addColumn('action', function($listabsensievent){
+            if($listabsensievent->status == "0"){
+                return '<a type="button" class="btn btn-flat btn-success" id="btn_deta" disabled><i class="fa fa-calendar"></i></a>
+                        <a onclick="viewdetAbsensiPanitia(\''.$listabsensievent->id.'\')" type="button" class="btn btn-flat btn-primary"><i class="fa fa-eye"></i></a>';
+            }else{
+                return '<a onclick="addFormPanitiaAb(\''.$listabsensievent->id.'\')" type="button" class="btn btn-flat btn-success" id="btn_deta" idab="'.$listabsensievent->id.'" ><i class="fa fa-calendar"></i></a>';
+            }
+        })->rawColumns(['status','action'])->make(true);
+    }
+
+    public function storeabsen(Request $request)
+    {
+        $id_event = $request->get('id_event');
+        $tgl_absen = Carbon::parse($request->get('absen_event'));
+
+        $absen = new AbsensiEvent();
+        $absen->id_event = $id_event;
+        $absen->tanggal_absensi= $tgl_absen;
+        $absen->status= "1";
+        $absen->keterangan = "";
+        $absen->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Generate Absen Berhasil'
+        ]);
+    }
+
+    public function panitaabsen(Request $request)
+    {
+        $id_event = $request->session()->get('id_event');
+
+        $panitiaabsen = Panitia::with(['user' => function($query){
+            $query->with(['karyawan' => function($query2){
+                $query2->with('jabatan');
+            }]);
+        }])->where('id_event','=', $id_event)
+                        ->orderBy('created_at','DESC')
+                        ->get();
+
+        return $panitiaabsen;
+    }
+
+    public function storedetabsen(Request $request, $id)
+    {
+        $loop = $request->get('panitia');
+        foreach ($loop as $value){
+            $detabsensi = new DetAbsenEvent;
+            $detabsensi->id_event = $request['id_event'];
+            $detabsensi->id_panitia = $value;
+            $detabsensi->id_absensi_event = $id;
+            $detabsensi->save();
+        }
+
+        $changestatus = AbsensiEvent::where('id','=', $id)->update(['status' => '0']);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Absensi Berhasil Dibuat'
+        ]);
+    }
+
+    public function detpanitaabsen(Request $request,$id){
+        $id_event = $request->session()->get('id_event');
+
+        $detpanitiaabsen = Panitia::where('id_event','=', $id_event)
+                        ->with(['DetAbsenEvent' => function($query) use ($id){
+                            $query->where('id_absensi_event','=',$id);
+                        }])
+                        ->orderBy('created_at','DESC')
+                        ->get();
+
+        return Datatables::of($detpanitiaabsen)
+        ->addColumn('nama_panitia', function($detpanitiaabsen){
+            return '<td>'.$detpanitiaabsen->user->name.'</td>';
+        })
+        ->addColumn('jbt_panitia', function($detpanitiaabsen){
+            return '<td>'.$detpanitiaabsen->user->karyawan->jabatan->jabatan.'</td>';
+        })
+        ->addColumn('sts_abs', function($detpanitiaabsen){
+ 
+        })->rawColumns(['nama_panitia','jbt_panitia','sts_abs'])->make(true);
     }
 }

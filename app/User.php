@@ -33,4 +33,9 @@ class User extends Authenticatable
         return $this->belongsTo('App\Karyawan','id_karyawan');
     }
 
+    public function panitia()
+    {
+        return $this->hasMany('App\Panitia','id_user');
+    }
+
 }

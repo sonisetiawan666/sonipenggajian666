@@ -34,12 +34,24 @@ Route::resource('event', 'EventController');
 
 Route::resource('panitia', 'PanitiaController');
 
-Route::resource('absensi', 'AbsensiController');
-
 Route::resource('pelanggan', 'PelangganController');
 
 
 Route::get('userlist', 'EventController@userlist')->name('user-list');
+Route::get('panitialist', 'EventController@panitialist')->name('panitia-list');
+Route::get('event-detail/{id_event}', 'EventController@detailevent')->name('event-detail');
+Route::post('panitiastore', 'EventController@storepanitia')->name('panitia-store');
+Route::delete('panitia/{id}', 'EventController@destroypanitia')->name('panitia-destroy');
 
+Route::get('date-event', 'EventController@dateevent')->name('event-date');
+
+
+
+
+Route::get('data-absensi', 'EventController@dataabsensi')->name('absensi-data');
+Route::post('absenstore', 'EventController@storeabsen')->name('absen-store');
+Route::get('panitiaabsen', 'EventController@panitaabsen')->name('panitia-absen');
+Route::post('detabsenstore/{id}', 'EventController@storedetabsen')->name('det-absen');
+Route::get('det-panitiaabsen/{id}', 'EventController@detpanitaabsen')->name('detpanitia-absen');
 });
 
