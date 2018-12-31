@@ -390,8 +390,8 @@ $(function(){
                       serverSide: true,
                       ajax: "{{ route('absensi-data') }}",
                       columns: [
-                        {data: 'tanggal_absensi', name:'tgl_absensi'},
-                        {data:'status', name:'sts_absensi'},
+                        {data: 'tanggal_absensi', name:'tglabsensi'},
+                        {data:'status', name:'stsabsensi'},
                         {data: 'action', class:'td-c action-align', name: 'action', orderable: false, searchable: false}
                       ]
                     });
@@ -455,6 +455,7 @@ $(function(){
 $(function(){
     $('#modal-addpanitiaab form').on('submit', function (e) {
         var id = $('#btn_deta').attr('idab');
+        console.log(id);
         if (!e.isDefaultPrevented()){
             $.ajax({
             url : "{{ url('detabsenstore') }}" + '/' + id,

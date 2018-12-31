@@ -148,6 +148,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Package Service Providers...

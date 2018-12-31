@@ -13,7 +13,7 @@
       <ul class="sidebar-menu">
         <li class="header">NE</li>
         <li><a href="{{ URL::to('dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="{{ URL::to('absensi') }}"><i class="fa fa-users"></i> <span>Absensi</span></a></li>
+        <li><a href="{{ URL::to('absensi-karyawan') }}"><i class="fa fa-users"></i> <span>Absensi</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-database"></i> <span>Master Data</span>
@@ -40,7 +40,7 @@
  
 
         <li><a href="{{ URL::to('event') }}"><i class="fa fa-dashboard"></i> <span>Event</span></a></li>
-        <li><a href="{{ URL::to('event') }}"><i class="fa fa-money"></i> <span>Pengajian</span></a></li>
+        <li><a href="{{ URL::to('penggajian') }}"><i class="fa fa-money"></i> <span>Pengajian</span></a></li>
   
         <li class="treeview">
           <a href="#">

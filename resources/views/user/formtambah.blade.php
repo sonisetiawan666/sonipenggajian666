@@ -24,14 +24,31 @@
               </div>
             </div>
 
-             <div class="form-group">
-              <label class="col-sm-2 control-label">Email</label>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Roles</label>
               <div class="col-sm-9">
-                <input class="form-control" name="email" type="email" required/>
+                <select class="form-control" name="roles">
+                  <option value=""></option>
+                  @foreach ($list_roles as $role)
+                    <option value="{{$role->id}}">{{$role->name}}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
 
             <div class="form-group">
+              <label class="col-sm-2 control-label">Karyawan</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="karyawan">
+                  <option value=""></option>
+                  @foreach ($list_karyawan as $karyawan)
+                    <option value="{{$karyawan->id}}">{{$karyawan->nama_karyawan}}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+
+             <div class="form-group">
               <label class="col-sm-2 control-label">Username</label>
               <div class="col-sm-9">
                 <input class="form-control" name="username" type="text" required/>

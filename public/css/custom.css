@@ -8,8 +8,59 @@
     margin-top:30px;
 }
 
+.inc-gaji{
+    margin: auto !important;
+}
 
+.inc-gaji .invoice-info{
+    border-bottom: 1px solid #868686;
+    border-top: 1px solid #868686;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 16px;
+}
+.inc-gaji .page-header{
+    border:none;
+}
+.btn-sb-kr{
+    margin-top:24px; 
+}
+@media print {
+    #noprint, .main-footer{
+        display: none;
+    }
 
+    @page {
+        size: auto;  /* auto is the initial value */
+        margin: 0mm 10mm 0mm 10mm; /* this affects the margin in the printer settings */
+      }
+  }
+
+ 
+.bd-frm-gj{
+    padding: 10px 0px 20px 0px;
+    height: 90px;
+}
+
+.slp-t{
+    text-align: center;
+    font-weight: 700;
+}
+.hd-ev-gj .box-title{
+    font-size: 18px;
+    border-top: 1px solid #bfb6b6;
+    border-bottom: 1px solid #bfb6b6;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.tb-dt{
+    padding-left:40px;
+    padding-right: 10px; 
+}
+.th-dt{
+    font-weight: 800;
+}
 
 .btn-outline-rounded{
     padding: 10px 40px;
@@ -38,7 +89,44 @@
     border: 1px solid black;
     margin-bottom: 20px;
 }
+@media (min-width: 768px){
+.wd-t {
+    width: 10.666667%;
+    margin-top: 6px;
+}
+}
 
+.box-header {
+    border-bottom: 1px solid #dad6d6;
+}
+
+.date-absen{
+    font-size: 21px;
+}
+
+.date-absen .fa{
+    margin-right: 8px;
+}
+.time-a{
+    font-size: 16px;
+}
+.absen-k{
+    padding: 35px;
+    text-align: center;
+}
+
+.nav-stacked-k li{
+    padding: 10px;
+    height: 50px;
+}
+
+#bd-absen{
+    min-height: 230px;
+}
+.no-absen{
+    text-align: center;
+    margin-top: 10%;
+}
 .mdl-vw-pn{
     background:white;
 }

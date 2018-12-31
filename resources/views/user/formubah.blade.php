@@ -18,17 +18,17 @@
             {{ csrf_field() }}
             {{method_field('PUT')}}
 
-             <div class="form-group">
-              <label class="col-sm-2 control-label">Name</label>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Karyawan</label>
               <div class="col-sm-9">
-                <input class="form-control" name="name" type="text" value="{{$user->name}}" required/>
+                <input class="form-control" name="karyawan-name" type="text" value="{{$user->karyawan->nama_karyawan}}" disabled required/>
               </div>
             </div>
 
              <div class="form-group">
-              <label class="col-sm-2 control-label">Email</label>
+              <label class="col-sm-2 control-label">Name</label>
               <div class="col-sm-9">
-                <input class="form-control" name="email" type="email" value="{{$user->email}}" required/>
+                <input class="form-control" name="name" type="text" value="{{$user->name}}" required/>
               </div>
             </div>
 
@@ -40,9 +40,25 @@
             </div>
 
             <div class="form-group">
+              <label class="col-sm-2 control-label">Roles</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="roles">
+                  <option value=""></option>
+                   @foreach ($list_roles as $roles)
+                     <option value="{{$roles->id}}"
+                       @if($roles->id == $user->roles[0]->id)
+                         selected
+                       @endif
+                       >{{$roles->name}}</option>
+                   @endforeach
+                 </select>
+              </div>
+            </div>
+
+            <div class="form-group">
               <label class="col-sm-2 control-label">Password</label>
               <div class="col-sm-9">
-                <input class="form-control" name="password" type="password" value="{{$user->password}}" required/>
+                <input class="form-control" name="password" type="password" value="" required/>
               </div>
             </div>
 

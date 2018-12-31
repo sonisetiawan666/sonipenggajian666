@@ -53,5 +53,24 @@ Route::post('absenstore', 'EventController@storeabsen')->name('absen-store');
 Route::get('panitiaabsen', 'EventController@panitaabsen')->name('panitia-absen');
 Route::post('detabsenstore/{id}', 'EventController@storedetabsen')->name('det-absen');
 Route::get('det-panitiaabsen/{id}', 'EventController@detpanitaabsen')->name('detpanitia-absen');
+
+
+Route::get('penggajian', 'PenggajianController@indexpenggajian')->name('penggajian-index');
+Route::get('detail-gaji/{id}', 'PenggajianController@detailgaji')->name('detail-gaji');
+Route::get('data-gaji', 'PenggajianController@datagaji')->name('gaji-data');
+Route::post('gajistore', 'PenggajianController@storegaji')->name('gaji-store');
+
+Route::post('detgajistore', 'PenggajianController@storedetgaji')->name('detgaji-store');
+Route::get('det-gaji/{id}', 'PenggajianController@detgaji')->name('det-gaji');
+Route::get('total_gaji/{id}', 'PenggajianController@totalgaji')->name('total-gaji');
+Route::get('feegajidet', 'PenggajianController@feegajidetail')->name('fee-detail-gaji');
+
+
+Route::get('absensi-karyawan', 'AbsensiController@absensiindex')->name('index.absensi');
+Route::get('dataabsensi', 'AbsensiController@absensidata')->name('data.absensi');
+Route::post('absenkarstore', 'AbsensiController@storeabsenkar')->name('absenkar-store');
+
+Route::get('tglabsensi', 'AbsensiController@absensitanggal')->name('tanggal.absensi');
+Route::post('storedetabsensi/{id}/{type}/{idd}', 'AbsensiController@detabsensistore')->name('store.detabsensi');
 });
 
