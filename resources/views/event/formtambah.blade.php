@@ -21,7 +21,10 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Nama Event</label>
               <div class="col-sm-9">
-                <input class="form-control" name="nama_event" type="text" required/>
+                <input class="form-control" name="nama_event" type="text"/>
+                @if ($errors->has('nama_event'))        
+                  <span class="label label-danger">{{ $errors->first('nama_event') }}</span> 
+                @endif
               </div>
             </div>
 
@@ -34,6 +37,9 @@
                       <option value="{{$kategori->id}}">{{$kategori->kategori}}</option>
                     @endforeach
                   </select>
+                  @if ($errors->has('nm_kategori'))        
+                      <span class="label label-danger">{{ $errors->first('nm_kategori') }}</span> 
+                  @endif
                 </div>
               </div>
 
@@ -46,13 +52,19 @@
                       <option value="{{$pelanggan->id}}">{{$pelanggan->nama_pelanggan}}</option>
                     @endforeach
                   </select>
+                  @if ($errors->has('nm_pelanggan'))        
+                      <span class="label label-danger">{{ $errors->first('nm_pelanggan') }}</span> 
+                  @endif
                 </div>
               </div>
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Tempat Event</label>
               <div class="col-sm-9">
-                <input class="form-control" name="tempat_event" type="text" required/>
+                <input class="form-control" name="tempat_event" type="text"/>
+                @if ($errors->has('tempat_event'))        
+                     <span class="label label-danger">{{ $errors->first('tempat_event') }}</span> 
+                @endif
               </div>
             </div>
 
@@ -83,14 +95,17 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Fee Per Hari</label>
               <div class="col-sm-9">
-                <input class="form-control" name="fee_per_hari" type="number" required/>
+                <input class="form-control" name="fee_per_hari" type="number"/>
+                @if ($errors->has('fee_per_hari'))        
+                      <span class="label label-danger">{{ $errors->first('fee_per_hari') }}</span> 
+                  @endif
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Deskripsi</label>
               <div class="col-sm-9">
-                <textarea class="form-control" name="deskripsi" required/></textarea>
+                <textarea class="form-control" name="deskripsi"/></textarea>
               </div>
             </div>
 

@@ -27,6 +27,22 @@ class KaryawanController extends Controller
 
     public function store(Request $request)
     {
+
+        $aturan = [             
+            'nama_karyawan' => 'required', 
+            'nm_jabatan' => 'required',
+            'jen_kel' => 'required',
+            'alamat' => 'required',            
+            'gaji' => 'required',                    
+        ]; 
+ 
+        $pesan = [           
+            'required' => 'Data ini Wajib Diisi !',           
+            'numeric' => 'Mohon isi dengan angka'         
+        ]; 
+ 
+        $this->validate($request,$aturan,$pesan); 
+
         $karyawan= new Karyawan();
         $karyawan->nama_karyawan = $request->get('nama_karyawan');
         $karyawan->id_jabatan = $request->get('nm_jabatan');
@@ -67,6 +83,20 @@ class KaryawanController extends Controller
 
     public function update(Request $request, $id)
     {
+        $aturan = [             
+            'nama_karyawan' => 'required', 
+            'nm_jabatan' => 'required',
+            'jen_kel' => 'required',
+            'alamat' => 'required',            
+            'gaji' => 'required|numeric',                    
+        ]; 
+ 
+        $pesan = [           
+            'required' => 'Data ini Wajib Diisi !',           
+            'numeric' => 'Mohon isi dengan angka'         
+        ]; 
+ 
+        $this->validate($request,$aturan,$pesan); 
 
         $karyawan = Karyawan::find($id);
         $karyawan->nama_karyawan = $request->get('nama_karyawan');

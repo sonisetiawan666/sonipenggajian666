@@ -21,7 +21,10 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Nama Karyawan </label>
               <div class="col-sm-9">
-                <input class="form-control" name="nama_karyawan" type="text" required/>
+                <input class="form-control" name="nama_karyawan" type="text"/>
+                @if ($errors->has('nama_karyawan'))        
+                  <span class="label label-danger">{{ $errors->first('nama_karyawan') }}</span> 
+                @endif
               </div>
             </div>
 
@@ -30,10 +33,10 @@
               <div class="col-sm-9">
                 <select class="form-control" name="nm_jabatan">
                   <option value=""></option>
-                  @foreach ($list_jabatan as $jabatan)
-                    <option value="{{$jabatan->id}}">{{$jabatan->jabatan}}</option>
-                  @endforeach
-                </select>
+                  </select>
+                @if ($errors->has('nm_jabatan'))        
+                  <span class="label label-danger">{{ $errors->first('nm_jabatan') }}</span> 
+                @endif
               </div>
             </div>
 
@@ -46,13 +49,17 @@
                   <option value="laki-laki">Laki - Laki</option>
                   <option value="perempuan">Perempuan</option>
                 </select>
+                @if ($errors->has('jen_kel'))        
+                  <span class="label label-danger">{{ $errors->first('jen_kel') }}</span> 
+                @endif
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Tempat Lahir </label>
               <div class="col-sm-9">
-                <input class="form-control" id="tmp_lhr" name="tempatlahir" type="text" required/>
+                <input class="form-control" id="tmp_lhr" name="tempatlahir" type="text"/>
+               
               </div>
             </div>
 
@@ -64,6 +71,7 @@
                     <i class="fa fa-calendar"></i>
                   </div>
                   <input type="text" id="tgl_lahir" name="tgl_lahir" class="tanggal_lahir form-control pull-right">
+                  
                 </div>
               </div>
             </div>
@@ -71,21 +79,26 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Alamat</label>
               <div class="col-sm-9">
-                <input class="form-control"  name="alamat" type="text" required />
+                <input class="form-control"  name="alamat" type="text"/>
+                @if ($errors->has('alamat'))        
+                  <span class="label label-danger">{{ $errors->first('alamat') }}</span> 
+                @endif
               </div>
             </div>  
             
             <div class="form-group">
               <label class="col-sm-2 control-label">No Telepon </label>
               <div class="col-sm-9">
-                <input class="form-control"  name="no_telp" type="number" required/>
+                <input class="form-control"  name="no_telp" type="number"/>
+                
               </div>
             </div>
             
             <div class="form-group">
               <label class="col-sm-2 control-label">No Rekening </label>
               <div class="col-sm-9">
-                <input class="form-control" name="no_rek" type="number" required/>
+                <input class="form-control" name="no_rek" type="number"/>
+                
               </div>
             </div>
 
@@ -93,7 +106,10 @@
               <label class="col-sm-2 control-label">Gaji Pokok </label>
               <div class="col-sm-9">
                 <input class="form-control" name="gaji" type="number"/>
-              </div>
+                @if ($errors->has('gaji'))        
+                  <span class="label label-danger">{{ $errors->first('gaji') }}</span> 
+              @endif          
+              </div> 
             </div>
 
             <div class="form-group">

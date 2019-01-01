@@ -37,6 +37,21 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
+        $aturan = [             
+            'nama_pelanggan' => 'required',  
+            'perusahaan' => 'required',
+            'alamat' => 'required',
+            'no_telepon' => 'required|numeric',
+           
+        ]; 
+ 
+        $pesan = [           
+            'required' => 'Data ini Wajib Diisi !',
+            'numeric' => 'Mohon isi dengan angka'                     
+        ]; 
+ 
+        $this->validate($request,$aturan,$pesan);
+
         $pelanggan = new Pelanggan();
         $pelanggan->nama_pelanggan = $request->get('nama_pelanggan');
         $pelanggan->perusahaan = $request->get('perusahaan');
@@ -80,6 +95,21 @@ class PelangganController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $aturan = [             
+            'nama_pelanggan' => 'required',  
+            'perusahaan' => 'required',
+            'alamat' => 'required',
+            'no_telepon' => 'required|numeric',
+           
+        ]; 
+ 
+        $pesan = [           
+            'required' => 'Data ini Wajib Diisi !',
+            'numeric' => 'Mohon isi dengan angka'                     
+        ]; 
+ 
+        $this->validate($request,$aturan,$pesan);
+        
         $pelanggan = Pelanggan::find($id);
         $pelanggan->nama_pelanggan = $request->get('nama_pelanggan');
         $pelanggan->perusahaan = $request->get('perusahaan');

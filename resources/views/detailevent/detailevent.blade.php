@@ -213,7 +213,7 @@
             </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" type="submit">Save</button>
+        <button type="button" class="btn btn-primary" type="submit">Simpan</button>
       </div>
     </div>
 

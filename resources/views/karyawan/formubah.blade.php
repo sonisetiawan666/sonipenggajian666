@@ -22,7 +22,10 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Nama Karyawan</label>
               <div class="col-sm-9">
-                <input class="form-control" name="nama_karyawan" type="text" value="{{$karyawan->nama_karyawan}}" required/>
+                <input class="form-control" name="nama_karyawan" type="text" value="{{$karyawan->nama_karyawan}}"/>
+              @if ($errors->has('nama_karyawan'))        
+                  <span class="label label-danger">{{ $errors->first('nama_karyawan') }}</span> 
+              @endif
               </div>
             </div>
 
@@ -39,6 +42,9 @@
                       >{{$jabatan->jabatan}}</option>
                   @endforeach
                 </select>
+                @if ($errors->has('nm_jabatan'))        
+                  <span class="label label-danger">{{ $errors->first('nm_jabatan') }}</span> 
+                @endif
               </div>
             </div>
             
@@ -58,13 +64,16 @@
                   @endif
                   >Perempuan</option>
                 </select>
+                @if ($errors->has('jen_kel'))        
+                  <span class="label label-danger">{{ $errors->first('jen_kel') }}</span> 
+                @endif
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Tempat Lahir </label>
               <div class="col-sm-9">
-                 <input class="form-control" name="tempatlahir" type="text" value="{{$karyawan->tempat_lahir}}" required/>
+                 <input class="form-control" name="tempatlahir" type="text" value="{{$karyawan->tempat_lahir}}"/>
               </div>
             </div>
 
@@ -83,21 +92,24 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Alamat</label>
               <div class="col-sm-9">
-                <input class="form-control"  name="alamat" value="{{$karyawan->alamat}}" type="text" required />
-              </div>
+                <input class="form-control"  name="alamat" value="{{$karyawan->alamat}}" type="text"/>
+              @if ($errors->has('alamat'))        
+                  <span class="label label-danger">{{ $errors->first('alamat') }}</span> 
+                @endif
+                </div>
             </div>  
             
             <div class="form-group">
               <label class="col-sm-2 control-label">No Telepon </label>
               <div class="col-sm-9">
-                <input class="form-control"  name="no_telp" value="{{$karyawan->no_telepon}}" type="number" required/>
+                <input class="form-control"  name="no_telp" value="{{$karyawan->no_telepon}}" type="number"/>
               </div>
             </div>
             
             <div class="form-group">
               <label class="col-sm-2 control-label">No Rekening </label>
               <div class="col-sm-9">
-                <input class="form-control" name="no_rek" value="{{$karyawan->no_rekening}}" type="number" required/>
+                <input class="form-control" name="no_rek" value="{{$karyawan->no_rekening}}" type="number"/>
               </div>
             </div>
 
@@ -105,7 +117,10 @@
               <label class="col-sm-2 control-label">Gaji Pokok </label>
               <div class="col-sm-9">
                 <input class="form-control" name="gaji" value="{{$karyawan->gaji}}" type="number" />
-              </div>
+                @if ($errors->has('gaji'))        
+                  <span class="label label-danger">{{ $errors->first('gaji') }}</span> 
+                @endif
+                </div>
             </div>
 
             <div class="form-group">

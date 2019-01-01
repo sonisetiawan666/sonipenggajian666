@@ -23,6 +23,17 @@ class KategoriController extends Controller
 
     public function store(Request $request)
     {
+        $aturan = [             
+            'kategori' => 'required',             
+                    
+        ]; 
+ 
+        $pesan = [           
+            'required' => 'Data ini Wajib Diisi !',                  
+        ]; 
+ 
+        $this->validate($request,$aturan,$pesan);
+
         $kategori= new Kategori();
         $kategori->kategori = $request->get('kategori');
         $kategori->save();
@@ -44,6 +55,17 @@ class KategoriController extends Controller
 
     public function update(Request $request, $id)
     {
+        $aturan = [             
+            'kategori' => 'required',             
+                    
+        ]; 
+ 
+        $pesan = [           
+            'required' => 'Data ini Wajib Diisi !',                  
+        ]; 
+ 
+        $this->validate($request,$aturan,$pesan);
+
         $kategori= new Kategori();
         $kategori=[
            'kategori' => $request->kategori,

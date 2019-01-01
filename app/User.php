@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function karyawan()
     {
-        return $this->belongsTo('App\Karyawan','id_karyawan');
+        return $this->belongsTo('App\Karyawan','id_karyawan' );
     }
 
 }

@@ -21,7 +21,10 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Jabatan *</label>
               <div class="col-sm-9">
-                <input class="form-control" name="jabatan" type="text" required/>
+                <input class="form-control" name="jabatan" type="text"/>
+                @if ($errors->has('jabatan'))        
+                  <span class="label label-danger">{{ $errors->first('jabatan') }}</span> 
+                @endif
               </div>
             </div>
             <div class="form-group">

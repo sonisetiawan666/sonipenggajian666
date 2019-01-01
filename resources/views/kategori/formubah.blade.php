@@ -21,7 +21,10 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Kategori *</label>
               <div class="col-sm-9">
-                <input class="form-control" name="kategori" type="text" value="{{$kategori->kategori}}" required/>
+                <input class="form-control" name="kategori" type="text" value="{{$kategori->kategori}}"/>
+                @if ($errors->has('kategori'))        
+                  <span class="label label-danger">{{ $errors->first('kategori') }}</span> 
+                @endif
               </div>
             </div>
 

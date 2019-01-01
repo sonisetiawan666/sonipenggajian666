@@ -24,6 +24,17 @@ class JabatanController extends Controller
 
     public function store(Request $request)
     {
+        $aturan = [             
+            'jabatan' => 'required',             
+                    
+        ]; 
+ 
+        $pesan = [           
+            'required' => 'Data ini Wajib Diisi !',                  
+        ]; 
+ 
+        $this->validate($request,$aturan,$pesan); 
+
         $jabatan= new Jabatan();
         $jabatan->jabatan = $request->get('jabatan');
         $jabatan->save();
@@ -49,6 +60,17 @@ class JabatanController extends Controller
 
     public function update(Request $request, $id)
     {
+        $aturan = [             
+            'jabatan' => 'required',             
+                    
+        ]; 
+ 
+        $pesan = [           
+            'required' => 'Data ini Wajib Diisi !',                  
+        ]; 
+ 
+        $this->validate($request,$aturan,$pesan);
+
         $jabatan = Jabatan::find($id);
         $jabatan->jabatan = $request->get('jabatan');
 

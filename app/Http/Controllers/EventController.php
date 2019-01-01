@@ -46,6 +46,23 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
+        $aturan = [             
+            'nama_event' => 'required', 
+            'nm_kategori' => 'required',
+            'nm_pelanggan' => 'required',
+            'tempat_event' => 'required',
+            'tanggal_mulai' => 'required',
+            'tanggal_selesai' => 'required',       
+            'fee_per_hari' => 'required|numeric',                    
+        ]; 
+ 
+        $pesan = [           
+            'required' => 'Data ini Wajib Diisi !',           
+            'numeric' => 'Mohon isi dengan angka'         
+        ]; 
+ 
+        $this->validate($request,$aturan,$pesan); 
+
         $event = new Event();
         $event->nama_event= $request -> get('nama_event');
         $event->id_kategori= $request -> get('nm_kategori');
@@ -95,6 +112,23 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $aturan = [             
+            'nama_event' => 'required', 
+            'nm_kategori' => 'required',
+            'nm_pelanggan' => 'required',
+            'tempat_event' => 'required',
+            'tanggal_mulai' => 'required',
+            'tanggal_selesai' => 'required',       
+            'fee_per_hari' => 'required|numeric',                    
+        ]; 
+ 
+        $pesan = [           
+            'required' => 'Data ini Wajib Diisi !',           
+            'numeric' => 'Mohon isi dengan angka'         
+        ]; 
+ 
+        $this->validate($request,$aturan,$pesan); 
+        
         $event = Event::find($id);
         $event->nama_event= $request -> get('nama_event');
         $event->id_kategori= $request -> get('nm_kategori');
