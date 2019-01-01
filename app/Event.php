@@ -31,5 +31,16 @@ class Event extends Model
 	public function pelanggan()
     {
         return $this->belongsTo('App\Pelanggan','id_pelanggan');
+	}
+	
+	public function panitia()
+    {
+        return $this->hasMany('App\Panitia','id_event');
+	}
+	
+	public function detabsenevent()
+    {
+        return $this->hasMany('App\DetAbsenEvent','id_event');;
     }
+
 }

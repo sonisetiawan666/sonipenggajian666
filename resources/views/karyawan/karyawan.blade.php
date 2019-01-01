@@ -34,7 +34,8 @@
                         <tr class="karyawan-list">
                             <td class="action">
                               <div class="btn-group btn-ac">
-                                <a href="{{ URL::to('karyawan/' . $karyawan->id . '/edit') }}" class="btn btn-flat btn-warning" type="button"><i class="fa fa-pencil"></i></a>
+                                <a href="
+                                " class="btn btn-flat btn-warning" type="button"><i class="fa fa-pencil"></i></a>
                                 <a href="#" type="button" onclick="Deletedata({{$karyawan->id}})" data-toggle="modal" data-target="#hapuskaryawan" class="btn btn-flat btn-danger"><i class="fa fa-times"></i></a> 
                               </div>
                             </td>

@@ -30,6 +30,11 @@ class Karyawan extends Model
 	public function jabatan()
     {
         return $this->belongsTo('App\Jabatan','id_jabatan');
+	}
+	
+	public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 
 }

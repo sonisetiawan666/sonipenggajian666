@@ -35,7 +35,7 @@
                               <div class="btn-group btn-ac">
                                 <a href="{{ URL::to('event/'.$event->id . '/edit') }}" 
                                 class="btn btn-flat btn-warning" type="button"><i class="fa fa-pencil"></i></a>
-                                <a href="{{ URL::to('event/'.$event->id) }}" class="btn btn-flat btn-success" type="button"><i class="fa fa-eye"></i></a>
+                                <a href="{{ URL::to('event-detail/'.$event->id) }}" class="btn btn-flat btn-success" type="button"><i class="fa fa-eye"></i></a>
                                 <a href="#" type="button" onclick="Deletedata({{$event->id}})" data-toggle="modal" data-target="#hapusevent" 
                                 class="btn btn-flat btn-danger"><i class="fa fa-times"></i></a> 
                               </div>
